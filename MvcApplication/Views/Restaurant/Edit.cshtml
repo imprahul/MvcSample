@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@ViewBag.Restaurant["Title"]</h2>
+
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>@Html.TextBox("Title", (string)ViewBag.Restaurant["Title"])</td>
+        </tr>
+        <tr>
+            <td>Phone number</td>
+            <td>@Html.TextBox("PhoneNumberText", (string)ViewBag.Restaurant["PhoneNumberText"])</td>
+        </tr>
+    </table>
+
+    <input type="submit" value="Save" />
+    
+    <div class="message-success">@ViewBag.Message</div>
+}
