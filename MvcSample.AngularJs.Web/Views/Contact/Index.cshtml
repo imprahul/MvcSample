@@ -1,0 +1,52 @@
+﻿@model dynamic
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html ng-app="AngularApp">
+    <head>
+        <title>Contacts</title>
+    </head>
+    <body>
+        <div ng-controller="ContactController">
+            <form>
+                <label>Name</label>
+                <input type="text" name="name" ng-model="newcontact.name" />
+                <label>Mobile</label>
+                <input type="text" name="mobile" ng-model="newcontact.mobile" />
+                <label>Email</label>
+                <input type="text" name="email" ng-model="newcontact.email" />
+                <br />
+                <input type="hidden" ng-model="newcontact.id" />
+                <input type="button" value="Save" ng-click="saveContact()" />
+            </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Mobile</th>
+                        <th>Email</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="contact in contacts">
+                        <td>{{ contact.name }}</td>
+                        <td>{{ contact.mobile }}</td>
+                        <td>{{ contact.email }}</td>
+                        <td>
+                            <a href="#" ng-click="edit(contact.id)">edit</a> |
+                            <a href="#" ng-click="delete(contact.id)">delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        @Scripts.Render("~/bundles/angular")
+        @Scripts.Render("~/bundles/AngularApp")
+    </body>
+</html>
